@@ -1,0 +1,419 @@
+/* =========================================================
+   === STYLES DE BASE ===
+   Ce bloc gère le style général de la page (fond, texte, etc.)
+   Il définit également une structure en flexbox pour coller le footer en bas
+========================================================= */
+
+/* La page HTML et le corps prennent toute la hauteur de la fenêtre */
+html, body {
+    height: 100%;
+}
+
+/* Corps principal de la page */
+body {
+    margin: 0;                                                          /* Supprime la marge par défaut du navigateur */
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif; 
+    background-color: #f9f9f9; 
+    color: #333; 
+    line-height: 1.6;                                                   /* Espace entre les lignes */
+    display: flex;                                                      /* Active le modèle flexbox pour gérer la structure verticale */
+    flex-direction: column;                                             /* Empile les éléments de haut en bas */
+}
+
+/* =========================================================
+   === EN-TÊTE DU SITE (.header) ===
+   Contient le titre principal et un sous-titre, avec un dégradé coloré
+========================================================= */
+.header {
+    background-image: url(../images/animation_header.gif);                                                 /* L’image couvre tout le conteneur */
+    background-size: cover;                                            /* L’image couvre tout le conteneur */       
+    color: white;                                                      
+    padding: 40px 20px;                                                 /* Espace interne autour du contenu */
+    text-align: center;                                                 /* Centre le texte horizontalement */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);                          /* Ombre subtile pour effet de relief */
+}
+
+/* Titre principal dans le header */
+.titre {
+    font-size: 38px;                                                    /* Taille importante */
+    font-weight: 700;                                                   /* Gras accentué */
+    margin-bottom: 10px;                                                /* Espace sous le titre */
+}
+
+/* Sous-titre du header */
+.sous-titre {
+    font-size: 16px;
+    color: #e0e0e0; /* Gris clair pour contraste doux avec le fond bleu */
+}
+
+/* =========================================================
+   === BARRE DE NAVIGATION (.nav) ===
+   Contient les liens de menu et les sous-menus déroulants
+========================================================= */
+.nav {
+    background-color: #fff; /* Fond blanc pour contraster avec le header */
+    margin-top: 25px; /* Espace au-dessus de la barre */
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Ombre légère pour effet de profondeur */
+}
+
+/* Liste principale du menu */
+.nav ul.menu {
+    list-style: none; /* Supprime les puces */
+    margin: 0;
+    padding: 12px 0;
+    display: flex; /* Met les liens sur une même ligne */
+    justify-content: center; /* Centre horizontalement le menu */
+    flex-wrap: wrap; /* Permet le retour à la ligne sur petits écrans */
+    gap: 30px; /* Espacement entre les éléments du menu */
+}
+
+/* Élément de menu principal (li) */
+.nav ul.menu > li {
+    position: relative; /* Nécessaire pour positionner le sous-menu */
+}
+
+/* Lien principal du menu */
+.nav ul.menu > li > a {
+    display: block; /* Occupe tout l’espace cliquable du bloc */
+    padding: 10px 18px; /* Espacement interne */
+    text-decoration: none; /* Supprime le soulignement */
+    color: #333; /* Couleur de texte neutre */
+    font-weight: 600; /* Texte légèrement gras */
+    border-radius: 6px; /* Coins arrondis pour effet moderne */
+    transition: all 0.3s ease; /* Animation fluide au survol */
+}
+
+/* Effet au survol sur les liens du menu */
+.nav ul.menu > li > a:hover {
+    background-color: #0072ff; /* Fond bleu vif */
+    color: white; /* Texte blanc */
+    transform: translateY(-2px); /* Légère élévation du bouton */
+}
+
+/* =========================================================
+   === SOUS-MENU DÉROULANT (.sous-menu) ===
+   S’affiche au survol d’un élément parent du menu principal
+========================================================= */
+.sous-menu {
+    display: none; /* Caché tant qu’on ne survole pas le parent */
+    position: absolute;
+    top: 100%; /* Positionné juste en dessous du parent */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Ombre marquée pour détacher du fond */
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    min-width: 180px; /* Largeur minimale du menu déroulant */
+    border-radius: 8px;
+    z-index: 1000; /* Au-dessus du reste du contenu */
+}
+
+/* Lien dans le sous-menu */
+.sous-menu li a {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #333;
+    white-space: nowrap; /* Empêche les retours à la ligne */
+    transition: background 0.3s ease;
+}
+
+/* Effet au survol d’un lien du sous-menu */
+.sous-menu li a:hover {
+    background-color: #f3f3f3; /* Légère mise en avant */
+}
+
+/* Affichage du sous-menu au survol du parent */
+.menu-deroulant:hover .sous-menu {
+    display: block;
+    animation: fadeIn 0.3s ease; /* Animation douce d’apparition */
+}
+
+/* Animation d’apparition du sous-menu (fondu + translation) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   === SECTION PRINCIPALE (.colonne) ===
+   Organisation du contenu principal sous forme de grille à 2 colonnes
+========================================================= */
+.colonne {
+    display: grid; /* Utilisation de CSS Grid pour une mise en page fluide */
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes égales */
+    gap: 30px; /* Espacement entre les colonnes */
+    max-width: 1200px; /* Largeur max du contenu */
+    width: 100%;
+    margin: 0 auto; /* Centre la grille horizontalement */
+    padding: 40px 20px;
+}
+
+/* =========================================================
+   === STYLES COMMUNS (.card, .sub-colonne) ===
+   Regroupe les propriétés partagées par les cartes et sous-sections
+========================================================= */
+.card, .sub-colonne {
+    background: white;
+    border-radius: 12px; /* Coins arrondis pour effet visuel doux */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Ombre discrète */
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation fluide */
+    text-align: left;
+}
+
+/* Effet d’élévation au survol */
+.card:hover, .sub-colonne:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+/* Titres dans les sous-colonnes */
+.sub-colonne h2 {
+    color: #0072ff;
+    margin-top: 0;
+}
+
+/* Paragraphe dans les sous-colonnes */
+.sub-colonne p {
+    color: #555;
+    font-size: 15px;
+}
+
+/* Liens dans les sous-colonnes */
+.sub-colonne a {
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Effet au survol sur les liens internes */
+.sub-colonne a:hover {
+    color: #0058cc;
+}
+
+/* =========================================================
+   === PIED DE PAGE (.footer) ===
+   Zone basse du site contenant les liens et crédits
+========================================================= */
+.footer {
+    background-color: #222; /* Fond sombre */
+    color: #ddd; /* Texte gris clair */
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px; /* Sépare du contenu précédent */
+}
+
+/* Liens du footer */
+.footer a {
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Effet au survol */
+.footer a:hover {
+    color: #7bb1ff;
+}
+
+/* =========================================================
+   === PAGE HISTOIRE ===
+   Mise en forme spécifique à la page historique
+========================================================= */
+
+/* Titre principal et sous-titre centrés */
+.titre-page {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sous-titre-page {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Conteneur principal de la page histoire */
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 95%;
+    margin: 40px auto;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+/* Contenu organisé verticalement */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* =========================================================
+   === TABLE DE LA FRISE CHRONOLOGIQUE ===
+   Mise en page du tableau des événements
+========================================================= */
+.card table {
+    width: 100%;
+    border-collapse: collapse; /* Supprime les bordures doubles */
+    font-size: 15px;
+}
+
+.card th {
+    background-color: #0072ff;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.card td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px 10px;
+    vertical-align: top;
+}
+
+/* =========================================================
+   === ZONE À DEUX COLONNES (.grid-2) ===
+   Sert à placer deux cartes ou textes côte à côte
+========================================================= */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* "fr" = fraction de l’espace disponible */
+    gap: 30px;
+    justify-content: center;
+} 
+
+/* =========================================================
+   === CARTES AVEC IMAGES ===
+========================================================= */
+.card img {
+    width: 100%; /* Image prend toute la largeur du conteneur */
+    border-radius: 8px; /* Coins arrondis */
+    margin-top: 10px;
+}
+
+/* =========================================================
+   === PAGE FAVORIS ===
+   Contient la photo de profil et la présentation personnelle
+========================================================= */
+
+/* Bloc principal du profil */
+.profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu horizontalement */
+    padding: 30px;
+    text-align: left;
+}
+
+/* Partie supérieure du profil (photo + infos) */
+.profil-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap; /* Évite le débordement */
+}
+
+/* Photo de profil */
+.profil-header img {
+    width: 180px;
+    height: 220px;
+    border-radius: 12px;
+    object-fit: cover; /* Coupe proprement l’image */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Informations à côté de la photo */
+.profil-info h2 {
+    color: #0072ff;
+    margin-bottom: 10px;
+}
+
+.profil-info p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+/* Lien cliquable dans la fiche profil */
+.profil-info a {
+    color: #0072ff;
+    text-decoration: none;
+}
+
+.profil-info a:hover {
+    text-decoration: underline;
+}
+
+/* Listes présentes dans les cartes */
+.card ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.card li {
+    margin-bottom: 6px;
+}
+
+/* =========================================================
+   === PAGE SOURCES ===
+   Présente la liste des sources, liens et notes
+========================================================= */
+
+/* Titre de la section */
+.card h1 {
+    color: #0072ff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Paragraphe introductif */
+.card p {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Liste de liens vers les sources */
+.liste-sources {
+    list-style-type: none; /* Supprime les puces */
+    padding: 0;
+    text-align: center;
+}
+
+.liste-sources li {
+    margin: 10px 0;
+}
+
+/* Style des liens de sources */
+.liste-sources a {
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+/* Effet au survol des liens */
+.liste-sources a:hover {
+    color: #0053b8;
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   === FOOTER COLLÉ EN BAS ===
+   Empêche le footer de remonter lorsque le contenu est court
+========================================================= */
+main, section {
+    flex: 1; /* Le contenu occupe tout l’espace disponible */
+}
+
+footer {
+    margin-top: auto; /* Pousse le footer en bas de la page */
+}
