@@ -1,0 +1,89 @@
+body {
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, 55px);
+    grid-template-rows: repeat(7, 55px);
+    gap: 8px;
+}
+
+.cell {
+    border: 2px solid #333;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    transition: transform 0.15s ease;
+    box-sizing: border-box;
+}
+
+.cell.pop {
+    transform: scale(1.18);
+}
+
+/* Colors */
+.green {
+    background: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.yellow {
+    background: #C9B458;
+    border-color: #C9B458;
+}
+
+.gray {
+    background: #3A3A3C;
+    border-color: #3A3A3C;
+}
+
+/* KEYBOARD */
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+button {
+    background: #777;
+    color: white;
+    border: none;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.enter,
+.back {
+    font-size: 14px;
+    padding: 14px 22px;
+}
