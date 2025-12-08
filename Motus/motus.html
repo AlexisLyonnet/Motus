@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Motus</title>
+
+  <!-- PyScript -->
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.3.1/core.css" />
+  <script type="module" src="https://pyscript.net/releases/2024.3.1/core.js"></script>
+
+  <link rel="stylesheet" href="motus.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="panel left">
+      <h2>Règles</h2>
+      <div id="rules" class="rules"></div>
+
+      <div class="legend">
+        <div class="legend-row">
+          <span class="swatch green"></span><span>Bonne lettre, bonne place</span>
+        </div>
+        <div class="legend-row">
+          <span class="swatch yellow"></span><span>Bonne lettre, mauvaise place</span>
+        </div>
+        <div class="legend-row">
+          <span class="swatch gray"></span><span>Lettre absente</span>
+        </div>
+      </div>
+
+      <p class="hint">Astuce : les accents sont ignorés (Ê = E).</p>
+    </aside>
+
+    <main class="center">
+      <div class="title">MOTUS</div>
+
+      <div id="grid" class="grid" aria-label="Grille de jeu"></div>
+
+      <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+      <div id="keyboard" class="keyboard" aria-label="Clavier"></div>
+    </main>
+
+    <aside class="panel right">
+      <h2>Difficulté</h2>
+      <div id="difficulty" class="difficulty">
+        <button class="diff easy" data-diff="easy">Facile</button>
+        <button class="diff medium" data-diff="medium">Moyen</button>
+        <button class="diff hard" data-diff="hard">Difficile</button>
+      </div>
+      <div id="diff-desc" class="diff-desc"></div>
+    </aside>
+  </div>
+
+  <!-- Modal fin de partie -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+      <button id="restart" class="primary">Rejouer</button>
+    </div>
+  </div>
+
+  <py-script src="motus.py"></py-script>
+</body>
+</html>
