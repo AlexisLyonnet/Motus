@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motus Clone</title>
+
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.3.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.3.1/core.js"></script>
+
+    <!-- Game CSS -->
+    <link rel="stylesheet" href="motus.css">
+</head>
+<body>
+
+<div class="game-container">
+
+    <!-- 7x7 Grid -->
+    <div id="grid" class="grid"></div>
+
+    <!-- Keyboard -->
+    <div id="keyboard" class="keyboard" aria-label="Clavier">
+        <div class="row">
+            <button type="button">A</button><button type="button">Z</button><button type="button">E</button>
+            <button type="button">R</button><button type="button">T</button><button type="button">Y</button>
+            <button type="button">U</button><button type="button">I</button><button type="button">O</button><button type="button">P</button>
+        </div>
+        <div class="row">
+            <button type="button">Q</button><button type="button">S</button><button type="button">D</button>
+            <button type="button">F</button><button type="button">G</button><button type="button">H</button>
+            <button type="button">J</button><button type="button">K</button><button type="button">L</button><button type="button">M</button>
+        </div>
+        <div class="row">
+            <button id="validate" class="enter" type="button">ENTRER</button>
+            <button type="button">W</button><button type="button">X</button><button type="button">C</button>
+            <button type="button">V</button><button type="button">B</button><button type="button">N</button>
+            <button id="backspace" class="back" type="button">⌫</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal (rules + end game) -->
+<div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+        <div id="modal-title" class="modal-title">Titre</div>
+        <div id="modal-text" class="modal-text">Texte</div>
+        <button id="modal-btn" class="modal-btn" type="button">OK</button>
+    </div>
+</div>
+
+<!-- Python game logic -->
+<py-script src="motus.py"></py-script>
+
+</body>
+</html>
